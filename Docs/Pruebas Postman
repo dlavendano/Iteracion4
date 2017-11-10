@@ -1,0 +1,349 @@
+PRUEBAS POSTMAN URL'S
+
+*INICIAR PRUEBAS CON LA SIGUIENTE URL*
+
+GET (URLS PRINCIPALES)
+
+http://localhost:8080/RotondAndes/rest/redireccionar
+
+ SELECCIONAR EL USUARIO DESDE EL CUAL SE QUIERE REALIZAR LAS OPERACIONES,
+ 
+ SIENDO ID_ROL: 
+ 					
+ 					1 - CLIENTE
+ 					2 - USUARIO_RESTAURANTE
+ 					3 - ADMINISTRADOR
+ 					
+**COMENTARIO**
+SE DEJARON ESTOS METODOS PARA VERIFICAR LA CORRECTA INSERCION DE DATOS
+
+GET (TODOS LOS CLIENTES)
+
+http://localhost:8080/RotondAndes/rest/usuarios/1
+
+GET (TODOS LOS USUARIOS RESTAURANTES)
+
+http://localhost:8080/RotondAndes/rest/usuarios/2
+
+GET (TODOS LOS ADMINISTRADOR)
+
+http://localhost:8080/RotondAndes/rest/usuarios/3
+
+**FIN COMENTARIO**
+
+
+
+POST (REGISTRAR UN CLIENTE O UN USUARIO RESTAURANTE)
+
+http://localhost:8080/RotondAndes/rest/usuarios/3/registrarUsuario
+
+JSON:
+ {
+ 	"administrador":
+ 	{
+ 		"id": "3",
+ 		"contraseña": "143"
+ 	},
+ 	"usuario":
+ 	{
+    	"id": 4,
+    	"nombre": "pedor",
+    	"identificacion": 56,
+    	"correo": "dl.avendano@uniandes",
+		"rol": 1,
+		 "contraseña": "12345"
+    }
+ }
+ 
+GET (REVISAR SI SE AGREGO EL CLIENTE O USUARIO RESTAURANTE)
+
+http://localhost:8080/RotondAndes/rest/usuarios
+ 
+POST (REGISTRAR UN RESTAURANTE)
+
+http://localhost:8080/RotondAndes/rest/usuarios/3/registrarRestaurante
+
+JSON:
+  {
+ 	"administrador":
+ 	{
+ 		"id": "3",
+ 		"contraseña": "143"
+ 		
+ 	},
+ 	"restaurante":
+ 	{
+    	"nombre": "McDonalds",
+    	"id_administrador": 4,
+    	"tipo":"Rapida"
+    }
+ }
+ 
+GET (REVISAR SI SE AGREGO EL RESTAURANTE)
+
+http://localhost:8080/RotondAndes/rest/restaurantes
+
+POST (REGISTRAR UN INGREDIENTE)
+
+http://localhost:8080/RotondAndes/rest/usuarios/2/registrarIngrediente
+
+JSON:
+  {
+ 	"usuarioRestaurante":
+ 	{
+ 		"id": "123",
+ 		"contraseña": "154"
+ 		
+ 	},
+ 	"ingrediente":
+ 	{
+    	"nombre": "cebolla",
+    	"descripcion" : "blanca"
+    }
+ }
+ 
+GET (REVISAR SI SE AGREGO EL INGREDIENTE)
+
+http://localhost:8080/RotondAndes/rest/restaurantes
+
+POST (REGISTRAR UN PRODUCTO)
+
+http://localhost:8080/RotondAndes/rest/usuarios/2/registrarProducto
+
+JSON:
+
+  {
+  		"usuarioRestaurante":
+ 	{
+ 		"id": "123",
+ 		"contraseña": "154"
+ 	},
+  	"producto":
+ 	{
+ 		"nombre": "pollo",
+ 		"descripcion":"pans",
+ 		"tiempoP":120,
+ 		"categoria":2
+ 	}
+ 
+ }
+
+GET (REVISAR SI SE AGREGO EL PRODUCTO)
+
+http://localhost:8080/RotondAndes/rest/restaurantes
+
+POST (REGISTRAR UN MENU)
+
+http://localhost:8080/RotondAndes/rest/usuarios/2/registrarMenu
+
+
+  {
+  		"usuarioRestaurante":
+ 	{
+ 		"id": "123",
+ 		"contraseña": "154"
+ 	},
+  	"menu":
+ 	{
+ 		"nombre": "Diurno",
+ 	}
+ 
+ }
+ 
+ GET (REVISAR SI SE AGREGO EL MENU)
+
+http://localhost:8080/RotondAndes/rest/menus
+ 
+
+POST (REGISTRAR UNA ZONA)
+
+http://localhost:8080/RotondAndes/rest/usuarios/3/registrarZona
+
+{
+  		"administrador":
+ 	{
+ 		"id": "3",
+ 		"contraseña": "143"
+ 	},
+  	"zonas":
+ 	{
+ 		"id":"1",
+ 		"nombre": "centro"
+ 	}
+ 
+ }
+ 
+ GET (REVISAR SI SE AGREGO LA ZONA)
+
+http://localhost:8080/RotondAndes/rest/zonas
+
+
+POST (ASIGNAR UN INGREDIENTE A UN PRODUCTO)
+
+http://localhost:8080/RotondAndes/rest/usuarios/2/asignarIngrediente
+
+{
+  		"usuarioRestaurante":
+ 	{
+ 		"id": "123",
+ 		"contraseña": "154"
+ 	},
+  	"productoIngrediente":
+ 	{
+ 		"nombre_producto":"pollo",
+ 		"nombre_ingrediente": "Lechuga"
+ 	}
+ 
+ }
+ 
+ POST (ASIGNAR UN PRODUCTO A UN MENU)
+
+http://localhost:8080/RotondAndes/rest/usuarios/2/asignarProducto
+
+{
+  		"usuarioRestaurante":
+ 	{
+ 		"id": "123",
+ 		"contraseña": "154"
+ 	},
+  	"menuProducto":
+ 	{
+ 		"nombreMenu":"otra opcion",
+ 		"nombreProducto": "NACHOS"
+ 	}
+ 
+ }
+ POST (AGREGAR UNA PREFERENCIA POR COSTO)
+
+http://localhost:8080/RotondAndes/rest/usuarios/1/agregarPreferenciaCosto
+{
+		"usuario":
+	{
+		"id":1,
+		"contraseña":123
+	},
+		"costo":100
+}
+ 
+ POST (AGREGAR UNA PREFERENCIA POR ZONA)
+
+http://localhost:8080/RotondAndes/rest/usuarios/1/agregarPreferenciaZona
+{
+		"usuario":
+	{
+		"id":1,
+		"contraseña":123
+	},
+		"zona":
+	{
+		"id":1,
+		"nombre":"OESTE"
+	}
+}
+ 
+POST(REGISTRAR PRODUCTO CON EQUIVALENCIA)
+ http://localhost:8080/RotondAndes/rest/usuarios/1/registrarPedido
+{
+		"cliente":
+	{
+		"id":1,
+		"contraseña":123
+	},
+	"pedido":{
+		"numero_pedido":8,
+		"precio":200,
+		"nombreProducto":"tamal",
+		"equivalencia":"perro",
+		"nombreRestaurante":"McDonalds"
+	}
+}
+PUT(SERVIR PEDIDO)
+http://localhost:8080/RotondAndes/rest/usuarios/2/servirPedido
+{
+	"usuarioRestaurante":
+	{
+		"id":123,
+		"contraseña":154
+	},
+		"numero_pedido":2,
+		"servido":"true"
+}
+POST(REGISTRAR EQUIVALENCIA DE UN PRODUCTO)
+http://localhost:8080/RotondAndes/rest/usuarios/2/registrarEquivalenciaProducto
+{
+	"producto":"perro",
+	"equivalente":"tamal",
+	"usuarioRestaurante":
+	{
+		"id":123,
+		"contraseña":154
+	}
+}
+POST(REGISTRAR EQUIVALENCIA DE UN INGREDIENTE)
+http://localhost:8080/RotondAndes/rest/usuarios/2/registrarEquivalenciaIngrediente
+{
+	"restaurante":"ChickAndChips",
+	"ingrediente":"cebolla",
+	"equivalente":"pan",
+	"usuarioRestaurante":
+	{
+		"id":123,
+		"contraseña":154
+	}
+}
+POST (REGISTRAR PEDIDO MESA)
+http://localhost:8080/RotondAndes/rest/usuarios/1/registrarPedidoMesa
+{
+    "cliente": {
+        "id": 1,
+        "contraseña": "123"
+    },
+    "numeroPedidoMesa":43,
+    "pedido": ["9,McDonalds,perro", "10,McDonalds,tamal"]
+}
+PUT (SERVIR PEDIDO MESA)
+http://localhost:8080/RotondAndes/rest/usuarios/2/servirPedidoMesa
+ {
+  "usuarioRestaurante":
+  {
+  "id": "2",
+  "contraseña": "124"
+  },
+  "numero_pedido_mesa":23,
+  "servido":"true"
+ }
+POST(SURTIR RESTAURANTE)
+http://localhost:8080/RotondAndes/rest/usuarios/2/surtirRestaurante
+{
+ "usuarioRestaurante":
+  {
+  "id": "123",
+  "contraseña": "154"
+  },
+ 	"restaurante":"McDonalds"
+}
+PUT (CANCELAR PEDIDO )
+ http://localhost:8080/RotondAndes/rest/usuarios/1/cancelarPedido
+ {
+  "cliente":
+  {
+  "id": "1",
+  "contraseña": "123"
+  },
+  "pedido":2
+ }
+ 
+ 	PUT (CANCELAR PEDIDO MESA)
+ http://localhost:8080/RotondAndes/rest/usuarios/1/cancelarPedidoMesa
+ {
+  "cliente":
+  {
+  "id": "1",
+  "contraseña": "123"
+  },
+  "pedido":23
+ }
+
+
+
+
